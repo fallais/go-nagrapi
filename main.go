@@ -26,7 +26,7 @@ type Service struct {
 	CurrentState string `json:"current_state,omitempty"`
 }
 
-var statusFile = flag.String("s", "status.dat", "Specify the location of the status file")
+var statusFile = flag.String("s", "/data/status.dat", "Specify the location of the status file")
 
 // GetState ...
 func GetState(w http.ResponseWriter, r *http.Request) {

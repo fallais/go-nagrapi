@@ -3,7 +3,7 @@ MAINTAINER  François ALLAIS <francois.allais@sogeti.com>
 
 ADD go-nagrapi /usr/bin
 
-RUN mdkir /data
+RUN mkdir /data
 
 EXPOSE     5555
 VOLUME     [ "/data" ]

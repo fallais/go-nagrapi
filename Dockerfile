@@ -1,5 +1,5 @@
 FROM        frolvlad/alpine-glibc:latest
-MAINTAINER  François ALLAIS <francois.allais@sogeti.com>
+MAINTAINER  François ALLAIS <francois.allais@hotmail.com>
 
 ADD go-nagrapi /usr/bin
 

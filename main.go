@@ -76,7 +76,9 @@ func main() {
 	// Routes for API
 	goji.Get("/state", GetState)
 
-	// Set the server
+	// Set the port
 	flag.Set("bind", ":8080")
+
+	// Start the server
 	goji.Serve()
 }

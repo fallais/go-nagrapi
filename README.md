@@ -12,7 +12,9 @@ Software can be used as follow : `go-nagrapi -s status.dat`
 
 It can (or must) be deployed in a Docker container as follow :
 
-`docker run -d --name api.1 -p 8080:8080 -v /var/log/centreon-engine/status.dat:/usr/bin/status.dat fallais/go-nagrapi`
+`docker run -d --name api -p 8080:8080 -v /var/log/centreon-engine:/data fallais/go-nagrapi`
+
+**Note** : The folder that is mapped must contain the `status.dat` Nagios file.
 
 ## API
 

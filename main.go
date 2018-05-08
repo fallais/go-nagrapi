@@ -34,7 +34,7 @@ var nagiosstate = flag.Int("n", 0, "Specify the number Nagios uses to describe t
 func GetState(w http.ResponseWriter, r *http.Request) {
 	// Parse the status file
 	sdata := nagtomaps.ParseStatus(*statusFile)
-	nagstatus := *nagiosstate
+	//nagstatus := *nagiosstate
 
 	hostResponse := &Response{
 		Hosts: nil,
@@ -53,7 +53,7 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 					Name:         name2,
 					CurrentState: &currstateint,
 				}
-				if service.CurrentState == &nagstatus {
+				if service.CurrentState == nagiosstate {
 					host.Services = append(host.Services, service)
 				}
 			}

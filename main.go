@@ -49,7 +49,7 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 					Name:         name2,
 					CurrentState: object2["current_state"],
 				}
-				if service.Currentstate != "0" {
+				if service.CurrentState != "0" {
 				host.Services = append(host.Services, service)
 				}
 			}

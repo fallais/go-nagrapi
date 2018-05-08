@@ -28,11 +28,13 @@ type Service struct {
 }
 
 var statusFile = flag.String("s", "/data/status.dat", "Specify the location of the status file")
+var nagiosstate = flag.Int("n", 0, "Specify the number Nagios uses to describe the status [0, 1, 2, 3]")
 
 // GetState ...
 func GetState(w http.ResponseWriter, r *http.Request) {
 	// Parse the status file
 	sdata := nagtomaps.ParseStatus(*statusFile)
+	nagstatus := *nagiosstate
 
 	hostResponse := &Response{
 		Hosts: nil,
@@ -51,7 +53,7 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 					Name:         name2,
 					CurrentState: currstateint,
 				}
-				if service.CurrentState > 0 {
+				if service.CurrentState == nagstatus {
 					host.Services = append(host.Services, service)
 				}
 			}

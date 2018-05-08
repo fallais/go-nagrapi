@@ -24,7 +24,7 @@ type Host struct {
 // Service ...
 type Service struct {
 	Name         string `json:"name,omitempty"`
-	CurrentState int    `json:"current_state,omitempty"`
+	CurrentState *int   `json:"current_state,omitempty"`
 }
 
 var statusFile = flag.String("s", "/data/status.dat", "Specify the location of the status file")
@@ -34,7 +34,7 @@ var nagiosstate = flag.Int("n", 0, "Specify the number Nagios uses to describe t
 func GetState(w http.ResponseWriter, r *http.Request) {
 	// Parse the status file
 	sdata := nagtomaps.ParseStatus(*statusFile)
-	nagstatus := *nagiosstate
+	//nagstatus := *nagiosstate
 
 	hostResponse := &Response{
 		Hosts: nil,
@@ -51,7 +51,7 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 				currstateint, _ := strconv.Atoi(object2["current_state"])
 				service := &Service{
 					Name:         name2,
-					CurrentState: currstateint,
+					CurrentState: &currstateint,
 				}
 				//if service.CurrentState == nagstatus {
 				host.Services = append(host.Services, service)

@@ -53,7 +53,7 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 					Name:         name2,
 					CurrentState: &currstateint,
 				}
-				if service.CurrentState == nagstatus {
+				if service.CurrentState == &nagstatus {
 					host.Services = append(host.Services, service)
 				}
 			}

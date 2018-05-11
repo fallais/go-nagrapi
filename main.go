@@ -32,7 +32,6 @@ var statusFile = flag.String("s", "/data/status.dat", "Specify the location of t
 
 //added the n flag to have as output only services with that level of issue
 var nagiosstate = flag.Int("n", 0, "Specify the number Nagios uses to describe the status [0, 1, 2, 3]")
-var httpport = flag.String("-httpport", "8080", "Specify tcp port for the webengine")
 
 // GetState ...
 func GetState(w http.ResponseWriter, r *http.Request) {
@@ -93,8 +92,7 @@ func main() {
 	goji.Get("/state", GetState)
 
 	// Set the port
-	httpport2 := ":" + *httpport
-	flag.Set("bind", httpport2)
+	flag.Set("bind", ":8080")
 
 	// Start the server
 	goji.Serve()

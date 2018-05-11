@@ -55,7 +55,6 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 			//if the state of the service does not match with the one in input interrupts the loop
 			currstateint, _ := strconv.Atoi(object2["current_state"])
 			if currstateint != nagstatus {
-				host = nil
 				continue
 			}
 			if object2["host_name"] == host.Name {

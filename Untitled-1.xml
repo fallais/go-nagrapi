@@ -1,0 +1,32 @@
+<CDSRules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="schema\CDSRules.xsd">
+<Revision>1.0</Revision>
+<CustomerName>TI</CustomerName>
+<ApplyAllTier>yes</ApplyAllTier>
+<Rule_Patterns>
+<PatternListGrp id="grp1">
+<Domain>liverm.skyti.ticdn.it</Domain>
+</PatternListGrp>
+<PatternListGrp id="grp3">
+<Domain>liverm.skyti.ticdn.it</Domain>
+<UrlRegex>index</UrlRegex>
+</PatternListGrp>
+</Rule_Patterns>
+<Rule_Actions>
+<Rule_Validate matchGroup="grp3" key="cisco123" protocol="all" error-redirect-url=""/>
+<Rule_Allow matchGroup="grp1,grp3" protocol="http"/>
+<Rule_SetAction name="Rule_DSConfig" matchGroup="grp1,grp3" protocol="http">
+<SetParameter name="SessionResolveRule#1" value="index(.*):none"/>
+<SetParameter name="SessionProtocol#1" value=".*:protocol=$generic_hls"/>
+<SetParameter name="SessionInactivityTimeout" value="400"/>
+<SetParameter name="StreamerSecretKey" value="1A2B3C4a5b6c7d8e9900A1B1C1D1E1C1"/>
+<SetParameter name="SessionClientIpCheckEnable" value="1"/>
+<SetParameter name="GenericSessionAccessProtect#1" value=".*.m3u8:none"/>
+<SetParameter name="GenericSessionAccessProtect#2" value=".*.ts:none"/>
+<SetParameter name="SessionSinfoTimeout" value="300"/>
+<SetParameter name="SessionIdleTimeout" value="420"/>
+<SetParameter name="SessionCookieTrackingEnable" value="1"/>
+<SetParameter name="SessionCookieRefreshThreshold" value="0.6"/>
+<SetParameter name="SessionManifestURIFailoverEnable" value="0"/>
+</Rule_SetAction>
+</Rule_Actions>
+</CDSRules>
